@@ -40,5 +40,5 @@ else:<br/>
   used Top 3 frequently bought item categories algorithm to get recommendations<br/>
 
 And this model gives good accuracy as I have taken users who have brought very few items in total also into account. 
-
-
+### Hackathon Result
+I was one among the Top 50 % of the leaderboard. 
