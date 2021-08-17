@@ -1,8 +1,8 @@
 # DESIGNING A RECOMMENDATION SYSTEM BASED ON PURCHASE DATA
 ### Description
 This project was done as a part of Hackathon 2 conducted by Univ.ai.
-I build a recommendation system based on purchase data of users being shared in the form of a dataset. I used
-methods like Matrix Factorization, Collaborative filtering etc. to build a Recommendation system.
+I build a recommendation system based on purchase data of users being shared in the form of a dataset. I used Baseline algorithm and Collaborative filtering based 
+methods like Matrix Factorization, KNN to build a Recommendation system. I also tried hybrid Recommender systems. Given Purchase Data does not contain explicit liking of a certain product associated with a user So I had used the frequency(number of times a user brought from a product category) as a representative of the liking. 
 
 ### Dataset
 Dataset is provided by the Hackathon organiser Univ.ai. Dataset contains past - purchase data of users.
@@ -19,3 +19,26 @@ This file contains the detailed purchasing history for some users. It has the or
 
 ### Goal of the Project / Problem statement of the Hackathon
 For each user, predict the top 3 probable product categories that they may purchase from, in the future.
+
+### Precision for different approaches tried
+| Algorithm used   | Precision on Validation Data|
+| ---      | ---       |
+| Baseline | 0.534        |
+| Top 3 frequently bought item categories | 0.534       |
+| KNNBasic | 0.27        |
+| Matrix factorization - SVD with ALS | 0.3|
+| Matrix factorization - SVD with SGD | 0.3|
+| Hybrid of Matrix factorization and Top 3 frequently bought item categories | 0.534|
+| Hybrid of Matrix factorization and Baseline | 0.534|
+
+### Conclusion
+The Best Precision of 0.534 is obtained from the naive Baseline approach or Top 3 frequently bought item categories approach or the Hybrid Recommendation system. <br>
+Initially the Matrix Factorization algorithm produced less precision, due to existence of some users who have brought very few items in total - which would not be a good representative of their likings. Later I removed those users who have brought very few items from the training data, and then fitted SVD over this data. I got the Recommendations as follows:<br>
+if user bought  more than 5 items:<br>
+  used SVD to get recommendations<br>
+else:<br>
+  used Top 3 frequently bought item categories algorithm to get recommendations<br>
+
+And this model gives good accuracy as I have taken users who have brought very few items in total also into account. 
+
+
